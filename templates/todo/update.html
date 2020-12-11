@@ -1,5 +1,23 @@
 {% extends 'todo/base.html' %}
 {% load static %}
 {% block title %}
-    <title>Update</title>
+    Update
+{% endblock %}
+
+{% block body %}
+     <div class="card">
+         <div class="card-header">Update Task</div>
+         <div class="card-body">
+             <form method="post">
+                 <div class="row mb-3">
+                    {% csrf_token %}
+                    {{form}}
+                 </div>
+                 <div class="row">
+                    <a href="{% url 'index' %}" class="btn btn-info"><-Go back</a>
+                    <button type="submit" class="btn btn-primary">Update</button>
+                 </div>
+             </form>
+         </div>
+     </div>
 {% endblock %}

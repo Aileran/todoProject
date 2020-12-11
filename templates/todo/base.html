@@ -15,12 +15,16 @@
     {% block title %}
     {% endblock %}
     </title>
-
-
 </head>
 <body>
-
-    <p>Hello, World!</p>
-
+    <div class="container mt-5">
+        <div class="row">
+             <div class="col">
+                 <h1 class="display-4 text-center">TO-DO-LIST</h1>
+                 {% block body %}
+                 {% endblock %}
+             </div>
+        </div>
+    </div>
 </body>
 </html>

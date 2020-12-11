@@ -1,21 +1,47 @@
 {% extends 'todo/base.html' %}
 {% load static %}
 {% block title %}
-    <title>To-Do List</title>
+    To-Do List
 {% endblock %}
 
 {% block body %}
-
-{#    potential button for add task#}
-{#    <form action="{% url 'movie' %}" method="post">#}
-{#            {% csrf_token %}#}
-{#    #}
-{#            <div class="input-group mb-3">#}
-{#                <input type="text" class="form-control" placeholder="Add Movie" name="movie" aria-label="add movie" aria-describedby="button-addon2">#}
-{#                <div class="input-group-append">#}
-{#                    <button class="btn btn-primary" type="submit" name="movie">ADD</button>#}
-{#                </div>#}
-{#            </div>#}
-{#    #}
-{#        </form>#}
+    <form action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Add tasks" name="task" aria-label="Add task">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="submit" name="add" id="add">ADD</button>
+            </div>
+        </div>
+    </form>
+    {% for task in tasks %}
+        {% if task.completed == False %}
+            <div class="row entry">
+                <div class="col-12 col-md-6 text-left">
+                    <p><b>{{task.task}}</b></p>
+                    <p>Created at: {{task.created_at}}</p>
+                </div>
+                <div class="col-12 col-md-6 text-right">
+                    <div class="button">
+                        <a href="{% url 'complete' task.id%}" class="btn btn-success">Completed</a>
+                        <a href="{% url 'update' task.id%}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete' task.id%}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row completed entry">
+                <div class="col-12 col-md-6 text-left">
+                    <p><b>{{task.task}}</b></p>
+                    <p>Created at: {{task.created_at}}</p>
+                </div>
+                <div class="col-12 col-md-6 text-right">
+                    <div class="button">
+                        <a href="{% url 'update' task.id%}" class="btn btn-primary">Update</a>
+                        <a href="{% url 'delete' task.id%}" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
 {% endblock %}

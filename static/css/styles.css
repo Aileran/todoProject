@@ -1,0 +1,42 @@
+body {
+    background-color:  #fafafa;
+}
+
+.entry {
+    border: 1px solid silver;
+    border-radius: .25rem;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+p + p {
+    color: gray;
+    font-size: .7rem;
+}
+
+@media screen and (max-width: 768px ){
+    .button{
+        text-align: left;
+    }
+}
+
+.completed{
+    background-color: #eeeeee;
+}
+
+.completed p {
+    text-decoration: line-through;
+}
+
+.btn {
+    margin-left: 2px;
+}
+
+#warning {
+    color: #fe6993;
+    background-color: rgba(254, 105, 147, 0.1);
+    border-radius: 3px;
+    padding: .2em;
+    line-height: 2em;
+}
